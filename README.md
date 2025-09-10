@@ -18,13 +18,32 @@ On your local machine create the private / public key for SSH
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_proxmox -N ""
 ```
 
+Utilizing this key create a ~/.ssh/config file.
 
+```sh
+Host master
+	Hostname 192.x.x.x
+	User ansibleuser
+	IdentityFile ~/.ssh/id_rsa_proxmox
+Host worker1
+	Hostname 192.x.x.x
+	User ansibleuser
+	IdentityFile ~/.ssh/id_rsa_proxmox
+Host worker2
+	Hostname 192.x.x.x
+	User ansibleuser
+	IdentityFile ~/.ssh/id_rsa_proxmox
+```
+
+Once you initialize in a later step you can now use simple commands like
+
+```sh
+ssh master
+```
 
 ### Create a script snippet to be used for the cloud-init
 
-
 >[!IMPORTANT]
->
 > Creating a snippet is very important in this step as the template will not work with out having `qemu-guest-agent`
 >
 

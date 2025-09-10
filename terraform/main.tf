@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "k3s_node" {
 
   cicustom   = "vendor=local:snippets/ubuntu.yaml"
   ciupgrade  = true
-  ciuser     = "root"
+  ciuser     = "ansibleuser"
   cipassword = var.cloud_init_password
 
   os_type   = "cloud-init"
